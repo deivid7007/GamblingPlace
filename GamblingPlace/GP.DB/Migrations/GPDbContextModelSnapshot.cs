@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 
@@ -29,6 +30,8 @@ namespace GP.DB.Migrations
                     b.Property<DateTime>("DateCreated");
 
                     b.Property<string>("Email");
+
+                    b.Property<bool>("IsAdmin");
 
                     b.Property<string>("Password");
 

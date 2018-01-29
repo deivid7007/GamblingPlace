@@ -20,7 +20,11 @@ namespace GP.DB
             else
             {
                 // TODO: Can use foreach to add some few more users.
+                context.Users.Add(new User("deivid7007@mail.bg", "ludaka1234", true));
                 context.Users.Add(new User("kra4eto@domain.com", "123"));
+                context.Users.Add(new User("doko@domain.com", "123"));
+                context.Users.Add(new User("rafa@domain.com", "123"));
+                context.Users.Add(new User("gosho@domain.com", "123"));
                 context.SaveChanges();
             }
 

@@ -4,14 +4,15 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 
 namespace GP.DB.Migrations
 {
     [DbContext(typeof(GPDbContext))]
-    [Migration("20180128144437_AddedInitialUser04")]
-    partial class AddedInitialUser04
+    [Migration("20180129120023_AddInitialUser12")]
+    partial class AddInitialUser12
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -25,9 +26,13 @@ namespace GP.DB.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<double>("Coins");
+
                     b.Property<DateTime>("DateCreated");
 
                     b.Property<string>("Email");
+
+                    b.Property<bool>("IsAdmin");
 
                     b.Property<string>("Password");
 
