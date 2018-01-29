@@ -11,13 +11,14 @@ namespace GP.UserService.Domain
         {
             
         }
-        public User(string email, string password,string id = null)
+        public User(string email, string password, bool isAdmin = false, string id = null)
         {
             this.Email = email;
             this.Password = password;
             this.Id = id ?? Guid.NewGuid().ToString();
             this.DateCreated = DateTime.Now;
-            this.Coins = 1000d;
+            this.Coins = 10000d;
+            this.IsAdmin = isAdmin;
         }
 
         [Key]
@@ -26,6 +27,7 @@ namespace GP.UserService.Domain
         public string Password { get; private set; }
         public DateTime DateCreated { get; private set; }
         public double Coins { get; private set; }
+        public bool IsAdmin { get; private set; }
 
 
 
