@@ -43,7 +43,7 @@ namespace GamblingPlace.Controllers
             {
                 var existOrNot = _userManager.CheckEmailForExistance(user.Email);
 
-                if (existOrNot == null)
+                if (existOrNot.Result == null)
                 {
                     _userManager.RegisterAsync(user);
                 }

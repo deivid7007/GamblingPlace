@@ -21,7 +21,8 @@ namespace GP.UserService
         public async Task<User> CheckEmailForExistance(string email)
         {
             List<User> users = await _ctx.Users.ToListAsync();
-            return users.FirstOrDefault(u => u.Email == email);
+            var result = users.FirstOrDefault(u => u.Email == email);
+            return result;
         }
 
         public async Task<List<User>> GetAllUsersAsync()
