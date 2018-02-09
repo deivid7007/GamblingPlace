@@ -14,7 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GP.Common\GP.Common.csproj" />
     <ProjectReference Include="..\GP.DB\GP.DB.csproj" />
+    <ProjectReference Include="..\GP.UserService\GP.UserService.csproj" />
   </ItemGroup>
 
 </Project>

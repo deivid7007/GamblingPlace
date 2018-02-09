@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GP.DB\GP.DB.csproj" />
+    <ProjectReference Include="..\GP.UserService.Domain\GP.UserService.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

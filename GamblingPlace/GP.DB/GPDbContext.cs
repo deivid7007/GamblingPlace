@@ -11,11 +11,19 @@ namespace GP.DB
 
         }
 
-        public DbSet<User> Users { get; set; }
+        public DbSet<GP.UserService.Domain.User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=tcp:gamblingplace.database.windows.net,1433;Initial Catalog=gamblingplace;Persist Security Info=False;User ID=gp-admin;Password=Ludaka!234;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            optionsBuilder.UseSqlServer("Server=tcp:gamblingplace.database.windows.net,1433;" +
+                                        "Initial Catalog=gamblingplace;" +
+                                        "Persist Security Info=False;" +
+                                        "User ID=gp-admin;" +
+                                        "Password=Ludaka!234;" +
+                                        "MultipleActiveResultSets=False;" +
+                                        "Encrypt=True;" +
+                                        "TrustServerCertificate=False;" +
+                                        "Connection Timeout=30;");
             base.OnConfiguring(optionsBuilder);
         }
     }

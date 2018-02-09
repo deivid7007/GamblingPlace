@@ -1,13 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GamblingPlace", "GamblingPlace\GamblingPlace.csproj", "{4BB05075-31A4-41E6-8265-564F81D2EA9A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GP.UserService.Domain", "GP.UserService.Domain\GP.UserService.Domain.csproj", "{B376C799-F577-465B-BD37-9AD4E84345CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GP.UserService.Domain", "GP.UserService.Domain\GP.UserService.Domain.csproj", "{B376C799-F577-465B-BD37-9AD4E84345CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GP.DB", "GP.DB\GP.DB.csproj", "{DD4B87F5-569A-4370-A6D5-F9D827AB917A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GP.DB", "GP.DB\GP.DB.csproj", "{DD4B87F5-569A-4370-A6D5-F9D827AB917A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{3A536E70-6CE1-49E3-9ACB-B33D593ECF17}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domains", "Domains", "{E92A5716-30DE-44CC-89E3-EBF88CD5D929}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GP.Common", "GP.Common\GP.Common.csproj", "{DB4C0DD6-2931-4813-9BE0-5BB7088CFC00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GP.UserService", "GP.UserService\GP.UserService.csproj", "{D1ED4DC3-59D8-4F23-BB7E-0F63615C7F19}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,9 +35,21 @@ Global
 		{DD4B87F5-569A-4370-A6D5-F9D827AB917A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD4B87F5-569A-4370-A6D5-F9D827AB917A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD4B87F5-569A-4370-A6D5-F9D827AB917A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB4C0DD6-2931-4813-9BE0-5BB7088CFC00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB4C0DD6-2931-4813-9BE0-5BB7088CFC00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB4C0DD6-2931-4813-9BE0-5BB7088CFC00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB4C0DD6-2931-4813-9BE0-5BB7088CFC00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1ED4DC3-59D8-4F23-BB7E-0F63615C7F19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1ED4DC3-59D8-4F23-BB7E-0F63615C7F19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1ED4DC3-59D8-4F23-BB7E-0F63615C7F19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1ED4DC3-59D8-4F23-BB7E-0F63615C7F19}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B376C799-F577-465B-BD37-9AD4E84345CA} = {E92A5716-30DE-44CC-89E3-EBF88CD5D929}
+		{D1ED4DC3-59D8-4F23-BB7E-0F63615C7F19} = {3A536E70-6CE1-49E3-9ACB-B33D593ECF17}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {41FB28E0-A500-43CB-90AB-60E03CDBBEB0}
