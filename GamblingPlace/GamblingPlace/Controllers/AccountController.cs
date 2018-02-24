@@ -32,7 +32,7 @@ namespace GamblingPlace.Controllers
         }
 
         [HttpPost]
-        public IActionResult Register(RegisterEntry entry)
+        public async Task<IActionResult> Register(RegisterEntry entry)
         {
             var password = HashUtils.CreateHashCode(entry.Password);
 
@@ -41,11 +41,11 @@ namespace GamblingPlace.Controllers
 
             if (user.Email != null && user.Password != null)
             {
-                var existOrNot = _userManager.CheckEmailForExistance(user.Email);
+                var existOrNot = await _userManager.CheckEmailForExistance(user.Email);
 
-                if (existOrNot.Result == null)
+                if (existOrNot == null)
                 {
-                    _userManager.RegisterAsync(user);
+                    await _userManager.RegisterAsync(user);
                 }
                 else
                 {
