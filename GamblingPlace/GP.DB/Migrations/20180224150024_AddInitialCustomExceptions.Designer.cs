@@ -11,9 +11,10 @@ using System;
 namespace GP.DB.Migrations
 {
     [DbContext(typeof(GPDbContext))]
-    partial class GPDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180224150024_AddInitialCustomExceptions")]
+    partial class AddInitialCustomExceptions
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

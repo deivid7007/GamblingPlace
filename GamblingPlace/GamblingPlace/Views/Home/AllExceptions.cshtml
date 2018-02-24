@@ -1,0 +1,77 @@
+﻿@model IEnumerable<GP.LogService.Domain.Models.CustomException>
+
+@{
+    ViewData["Title"] = "AllExceptions";
+}
+
+<h2>AllExceptions</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CustomMessage)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CustomStackTrace)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CustomInnerMessage)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CustomInnerStackTrace)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateCreated)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HelpLink)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Source)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HResult)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomMessage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomStackTrace)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomInnerMessage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomInnerStackTrace)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCreated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HelpLink)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Source)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HResult)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

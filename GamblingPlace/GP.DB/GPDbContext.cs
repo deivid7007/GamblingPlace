@@ -1,6 +1,8 @@
 ﻿using GP.UserService.Domain;
 using Microsoft.EntityFrameworkCore;
 using System;
+using Microsoft.Extensions.DependencyInjection;
+using GP.LogService.Domain.Models;
 
 namespace GP.DB
 {
@@ -12,6 +14,7 @@ namespace GP.DB
         }
 
         public DbSet<GP.UserService.Domain.User> Users { get; set; }
+        public DbSet<GP.LogService.Domain.Models.CustomException> CustomExceptions { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

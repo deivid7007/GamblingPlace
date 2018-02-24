@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GP.LogService.Domain\GP.LogService.Domain.csproj" />
     <ProjectReference Include="..\GP.UserService.Domain\GP.UserService.Domain.csproj" />
   </ItemGroup>
 
