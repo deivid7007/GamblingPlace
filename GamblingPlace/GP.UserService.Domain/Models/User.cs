@@ -9,9 +9,9 @@ namespace GP.UserService.Domain
     {
         public User()
         {
-            
+
         }
-        public User(string email, string password, bool isAdmin = false, string id = null)
+        public User(string email, string password, string validationCode, bool isAdmin = false, bool isEmailConfirmed = false, string id = null)
         {
             this.Email = email;
             this.Password = password;
@@ -19,6 +19,8 @@ namespace GP.UserService.Domain
             this.DateCreated = DateTime.Now;
             this.Coins = 10000d;
             this.IsAdmin = isAdmin;
+            this.ValidationCode = validationCode;
+            this.IsEmailConfirmed = isEmailConfirmed;
         }
 
         [Key]
@@ -28,6 +30,11 @@ namespace GP.UserService.Domain
         public DateTime DateCreated { get; private set; }
         public double Coins { get; private set; }
         public bool IsAdmin { get; private set; }
+        public string ValidationCode { get; private set; }
+        public bool IsEmailConfirmed { get; private set; }
+
+
+
 
 
 

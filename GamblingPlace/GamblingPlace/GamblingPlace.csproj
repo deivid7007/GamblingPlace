@@ -17,6 +17,8 @@
     <ProjectReference Include="..\GP.Common\GP.Common.csproj" />
     <ProjectReference Include="..\GP.DB\GP.DB.csproj" />
     <ProjectReference Include="..\GP.LogService\GP.LogService.csproj" />
+    <ProjectReference Include="..\GP.NotificationService.Domain\GP.NotificationService.Domain.csproj" />
+    <ProjectReference Include="..\GP.NotificationService\GP.NotificationService.csproj" />
     <ProjectReference Include="..\GP.UserService\GP.UserService.csproj" />
   </ItemGroup>
 

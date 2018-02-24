@@ -17,9 +17,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GP.Common", "GP.Common\GP.C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GP.UserService", "GP.UserService\GP.UserService.csproj", "{D1ED4DC3-59D8-4F23-BB7E-0F63615C7F19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GP.LogService.Domain", "GP.LogService.Domain\GP.LogService.Domain.csproj", "{066AC6F7-32D5-426E-8497-366BE6FE0791}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GP.LogService.Domain", "GP.LogService.Domain\GP.LogService.Domain.csproj", "{066AC6F7-32D5-426E-8497-366BE6FE0791}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GP.LogService", "GP.LogService\GP.LogService.csproj", "{58ACD850-33AE-4973-9362-066D792EFA12}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GP.LogService", "GP.LogService\GP.LogService.csproj", "{58ACD850-33AE-4973-9362-066D792EFA12}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GP.NotificationService.Domain", "GP.NotificationService.Domain\GP.NotificationService.Domain.csproj", "{1A768585-9F75-4150-AFDA-537C94120B80}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GP.NotificationService", "GP.NotificationService\GP.NotificationService.csproj", "{EA1FE75F-37F3-4A19-887F-CCB19EE4271F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +59,14 @@ Global
 		{58ACD850-33AE-4973-9362-066D792EFA12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58ACD850-33AE-4973-9362-066D792EFA12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58ACD850-33AE-4973-9362-066D792EFA12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A768585-9F75-4150-AFDA-537C94120B80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A768585-9F75-4150-AFDA-537C94120B80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A768585-9F75-4150-AFDA-537C94120B80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A768585-9F75-4150-AFDA-537C94120B80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA1FE75F-37F3-4A19-887F-CCB19EE4271F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA1FE75F-37F3-4A19-887F-CCB19EE4271F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA1FE75F-37F3-4A19-887F-CCB19EE4271F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA1FE75F-37F3-4A19-887F-CCB19EE4271F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,6 +76,8 @@ Global
 		{D1ED4DC3-59D8-4F23-BB7E-0F63615C7F19} = {3A536E70-6CE1-49E3-9ACB-B33D593ECF17}
 		{066AC6F7-32D5-426E-8497-366BE6FE0791} = {E92A5716-30DE-44CC-89E3-EBF88CD5D929}
 		{58ACD850-33AE-4973-9362-066D792EFA12} = {3A536E70-6CE1-49E3-9ACB-B33D593ECF17}
+		{1A768585-9F75-4150-AFDA-537C94120B80} = {E92A5716-30DE-44CC-89E3-EBF88CD5D929}
+		{EA1FE75F-37F3-4A19-887F-CCB19EE4271F} = {3A536E70-6CE1-49E3-9ACB-B33D593ECF17}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {41FB28E0-A500-43CB-90AB-60E03CDBBEB0}

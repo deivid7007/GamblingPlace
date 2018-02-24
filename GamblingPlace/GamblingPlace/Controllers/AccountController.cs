@@ -4,10 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using GamblingPlace.DTO;
 using GP.Common.Helpers;
+using GP.DB;
 using GP.LogService;
 using GP.LogService.Domain;
+using GP.NotificationService;
+using GP.NotificationService.Domain;
 using GP.UserService;
 using GP.UserService.Domain;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,6 +21,8 @@ namespace GamblingPlace.Controllers
     {
         private IUser _userManager = new UserManager();
         private ILog _logger = Logger.GetInstance;
+        private INotificationActor _notificationManager = new NotificationManager();
+        private GPDbContext _ctx = new GPDbContext();
 
 
         public IActionResult Index()
@@ -42,8 +48,9 @@ namespace GamblingPlace.Controllers
             {
 
                 var password = HashUtils.CreateHashCode(entry.Password);
+                string validationCode = HashUtils.CreateReferralCode();
 
-                User user = new User(entry.Email, password, false);
+                User user = new User(entry.Email, password, validationCode);
 
                 if (user.Email != null && user.Password != null)
                 {
@@ -52,6 +59,7 @@ namespace GamblingPlace.Controllers
                     if (existOrNot == null)
                     {
                         await _userManager.RegisterAsync(user);
+                        await _notificationManager.SendConfirmationEmailAsync(user);
                     }
                     else
                     {
@@ -71,6 +79,54 @@ namespace GamblingPlace.Controllers
             }
 
             return RedirectToAction("Index", "Home");
+        }
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<ActionResult> ValidateEmail(string userId, string validationCode)
+        {
+            if (userId == null || validationCode == null)
+            {
+                return RedirectToAction(nameof(HomeController.Index), "Home");
+            }
+            try
+            {
+                User user = await _userManager.GetUserByIdAsync(userId);
+                if (user == null || validationCode != user.ValidationCode)
+                {
+                    return RedirectToAction(nameof(HomeController.Index), "Home");
+                }
+                user = UpdateUserEmailConfirmation(user);
+                _ctx.Update(user);
+                await _ctx.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                await _logger.LogCustomExceptionAsync(ex, null);
+                return RedirectToAction("Error", "Home");
+            }
+            return View("ConfirmEmail");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Logout()
+        {
+            //HttpContext.Session.SetObjectAsJson<string>("UserId", null);
+           // HttpContext.Session.SetObjectAsJson<string>("UserName", null);
+            return RedirectToAction(nameof(HomeController.Index), "Home");
+        }
+
+
+        private User UpdateUserEmailConfirmation(User user)
+        {
+            var updatedUser = new User(
+                user.Email,
+                user.Password,
+                user.ValidationCode,
+                false,
+                true,
+                new Guid().ToString());
+            return updatedUser;
         }
 
     }

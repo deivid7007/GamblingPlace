@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GP.LogService.Domain\GP.LogService.Domain.csproj" />
+    <ProjectReference Include="..\GP.LogService\GP.LogService.csproj" />
+    <ProjectReference Include="..\GP.NotificationService.Domain\GP.NotificationService.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
