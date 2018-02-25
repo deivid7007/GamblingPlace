@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GamblingPlace.DTO;
+using GamblingPlace.Extensions;
 using GP.Common.Helpers;
 using GP.DB;
 using GP.LogService;
@@ -30,6 +31,8 @@ namespace GamblingPlace.Controllers
             return View();
         }
 
+
+        [HttpGet]
         public IActionResult Login()
         {
             return View();
@@ -111,8 +114,8 @@ namespace GamblingPlace.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Logout()
         {
-            //HttpContext.Session.SetObjectAsJson<string>("UserId", null);
-           // HttpContext.Session.SetObjectAsJson<string>("UserName", null);
+            HttpContext.Session.SetObjectAsJson<string>("UserId", null);
+            HttpContext.Session.SetObjectAsJson<string>("Email", null);
             return RedirectToAction(nameof(HomeController.Index), "Home");
         }
 
@@ -124,7 +127,7 @@ namespace GamblingPlace.Controllers
                 user.Password,
                 user.ValidationCode,
                 false,
-                true, 
+                true,
                 user.Id);
             return updatedUser;
         }
@@ -158,8 +161,8 @@ namespace GamblingPlace.Controllers
                     }
                 }
 
-                //HttpContext.Session.SetObjectAsJson<string>("UserId", user.Id);
-                //HttpContext.Session.SetObjectAsJson<string>("UserName", user.Username);
+                HttpContext.Session.SetObjectAsJson<string>("UserId", user.Id);
+                HttpContext.Session.SetObjectAsJson<string>("Email", user.Email);
             }
             catch (Exception ex)
             {
@@ -167,8 +170,8 @@ namespace GamblingPlace.Controllers
                 return RedirectToAction("Error", "Home");
             }
 
-            return RedirectToPage("Contact", "Home");
-            //return RedirectToAction("Index", "Manage");
+
+            return RedirectToAction("AllExceptions", "Home");
         }
 
 
