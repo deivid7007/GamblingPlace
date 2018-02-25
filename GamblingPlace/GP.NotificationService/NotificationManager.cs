@@ -14,7 +14,8 @@ namespace GP.NotificationService
     public class NotificationManager : INotificationActor
     {
         private ILog _logger = Logger.GetInstance;
-        private string confirmationEmailUrl = "https://gamblingplace.azurewebsites.net/account/ValidateEmail";
+        // private string confirmationEmailUrl = "https://gamblingplace.azurewebsites.net/account/ValidateEmail";
+        private string confirmationEmailUrl = "http://localhost:57896/account/ValidateEmail";
         private string passwordResetUrl = "https://itgigs.azurewebsites.net/account/PasswordReset";
 
 
