@@ -46,5 +46,10 @@ namespace GP.UserService
             await _ctx.Users.AddAsync(user);
             await _ctx.SaveChangesAsync();
         }
+
+        public async Task<User> GetUserByEmailAsync(string email)
+        {
+            return await _ctx.Users.FirstOrDefaultAsync(u => u.Email == email);
+        }
     }
 }

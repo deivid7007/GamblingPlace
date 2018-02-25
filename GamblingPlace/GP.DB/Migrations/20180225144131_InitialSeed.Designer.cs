@@ -11,8 +11,8 @@ using System;
 namespace GP.DB.Migrations
 {
     [DbContext(typeof(GPDbContext))]
-    [Migration("20180224160416_EmailCode")]
-    partial class EmailCode
+    [Migration("20180225144131_InitialSeed")]
+    partial class InitialSeed
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

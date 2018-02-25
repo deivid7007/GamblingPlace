@@ -124,10 +124,53 @@ namespace GamblingPlace.Controllers
                 user.Password,
                 user.ValidationCode,
                 false,
-                true,
-                new Guid().ToString());
+                true, 
+                user.Id);
             return updatedUser;
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginEntry entry)
+        {
+            ViewData["WrongLogin"] = null;
+            if (entry.Email == null || entry.Password == null)
+            {
+                ViewData["WrongLogin"] = "Incorrect form!";
+                return View();
+            }
+
+            try
+            {
+                var user = await _userManager.GetUserByEmailAsync(entry.Email);
+                if (user != null)
+                {
+                    if (!user.IsEmailConfirmed)
+                    {
+                        ViewData["WrongLogin"] = "Email is not confirmed!";
+                        return View();
+                    }
+                    if (!HashUtils.VerifyPassword(entry.Password, user.Password))
+                    {
+                        /* Don't reveal which one is incorrect.  */
+                        ViewData["WrongLogin"] = "Incorrect username or password!";
+                        return View();
+
+                    }
+                }
+
+                //HttpContext.Session.SetObjectAsJson<string>("UserId", user.Id);
+                //HttpContext.Session.SetObjectAsJson<string>("UserName", user.Username);
+            }
+            catch (Exception ex)
+            {
+                await _logger.LogCustomExceptionAsync(ex, null);
+                return RedirectToAction("Error", "Home");
+            }
+
+            return RedirectToPage("Contact", "Home");
+            //return RedirectToAction("Index", "Manage");
+        }
+
 
     }
 }

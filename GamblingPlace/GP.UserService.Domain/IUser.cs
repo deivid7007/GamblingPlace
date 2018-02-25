@@ -12,5 +12,6 @@ namespace GP.UserService.Domain
         Task<User> GetUserByIdAsync(string id);
         Task<List<User>> GetAllUsersAsync();
         Task<User> CheckEmailForExistance(string email);
+        Task<User> GetUserByEmailAsync(string email);
     }
 }
