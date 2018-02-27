@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using GamblingPlace.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using GamblingPlace.Models;
 using GP.DB;
@@ -16,18 +17,29 @@ namespace GamblingPlace.Controllers
 {
     public class HomeController : Controller
     {
+        private string _userId;
+        private string _email;
         private IUser _userManager = new UserManager();
         private ILog _logger = Logger.GetInstance;
         private GPDbContext _ctx = new GPDbContext();
 
         public IActionResult Index()
         {
+            _userId = HttpContext.Session.GetObjectFromJson<string>("UserId");
+            _email = HttpContext.Session.GetObjectFromJson<string>("Email");
+            ViewData["UserId"] = _userId;
+            ViewData["Email"] = _email;
+
             return View();
         }
 
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
+            _userId = HttpContext.Session.GetObjectFromJson<string>("UserId");
+            _email = HttpContext.Session.GetObjectFromJson<string>("Email");
+            ViewData["UserId"] = _userId;
+            ViewData["Email"] = _email;
 
             return View();
         }
@@ -35,16 +47,30 @@ namespace GamblingPlace.Controllers
         public IActionResult Contact()
         {
             ViewData["Message"] = "Your contact page.";
+            _userId = HttpContext.Session.GetObjectFromJson<string>("UserId");
+            _email = HttpContext.Session.GetObjectFromJson<string>("Email");
+            ViewData["UserId"] = _userId;
+            ViewData["Email"] = _email;
 
             return View();
         }
 
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        //public IActionResult AllExceptions()
+        //{
+        //    _userId = HttpContext.Session.GetObjectFromJson<string>("UserId");
+        //    _email = HttpContext.Session.GetObjectFromJson<string>("Email");
+        //    ViewData["UserId"] = _userId;
+        //    ViewData["Email"] = _email;
+        //    return View();
+        //}
+        [HttpGet]
         public async Task<IActionResult> AllExceptions()
         {
+            _userId = HttpContext.Session.GetObjectFromJson<string>("UserId");
+            _email = HttpContext.Session.GetObjectFromJson<string>("Email");
+            ViewData["UserId"] = _userId;
+            ViewData["Email"] = _email;
+
             List<CustomException> exceptions = null;
             try
             {

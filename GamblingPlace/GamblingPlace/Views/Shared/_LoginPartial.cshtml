@@ -1,12 +1,12 @@
-﻿@if (ViewData["UserId"] != null)
+﻿@if (ViewData["UserId"] != null && ViewData["Email"] != null)
 {
     <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="navbar-right">
         <ul class="nav navbar-nav navbar-right">
             <li>
-                   <h3>@ViewData["Email"] </h3>
+                   <h4 style="color: white;">@ViewData["Email"] </h4>
             </li>
             <li>
-                <button type="submit" class="btn btn-link navbar-btn navbar-link">Log out</button>
+                <button type="submit" class="btn btn-link navbar-btn navbar-link">Logout</button>
             </li>
         </ul>
     </form>
