@@ -19,6 +19,7 @@ namespace GamblingPlace.Controllers
     {
         private string _userId;
         private string _email;
+        private double _coins;
         private IUser _userManager = new UserManager();
         private ILog _logger = Logger.GetInstance;
         private GPDbContext _ctx = new GPDbContext();
@@ -27,19 +28,22 @@ namespace GamblingPlace.Controllers
         {
             _userId = HttpContext.Session.GetObjectFromJson<string>("UserId");
             _email = HttpContext.Session.GetObjectFromJson<string>("Email");
+            _coins = HttpContext.Session.GetObjectFromJson<double>("Coins");
             ViewData["UserId"] = _userId;
             ViewData["Email"] = _email;
+            ViewData["Coins"] = _coins;
 
             return View();
         }
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
             _userId = HttpContext.Session.GetObjectFromJson<string>("UserId");
             _email = HttpContext.Session.GetObjectFromJson<string>("Email");
+            _coins = HttpContext.Session.GetObjectFromJson<double>("Coins");
             ViewData["UserId"] = _userId;
             ViewData["Email"] = _email;
+            ViewData["Coins"] = _coins;
 
             return View();
         }
@@ -49,8 +53,10 @@ namespace GamblingPlace.Controllers
             ViewData["Message"] = "Your contact page.";
             _userId = HttpContext.Session.GetObjectFromJson<string>("UserId");
             _email = HttpContext.Session.GetObjectFromJson<string>("Email");
+            _coins = HttpContext.Session.GetObjectFromJson<double>("Coins");
             ViewData["UserId"] = _userId;
             ViewData["Email"] = _email;
+            ViewData["Coins"] = _coins;
 
             return View();
         }
@@ -60,8 +66,10 @@ namespace GamblingPlace.Controllers
         {
             _userId = HttpContext.Session.GetObjectFromJson<string>("UserId");
             _email = HttpContext.Session.GetObjectFromJson<string>("Email");
+            _coins = HttpContext.Session.GetObjectFromJson<double>("Coins");
             ViewData["UserId"] = _userId;
             ViewData["Email"] = _email;
+            ViewData["Coins"] = _coins;
 
             List<CustomException> exceptions = null;
             try

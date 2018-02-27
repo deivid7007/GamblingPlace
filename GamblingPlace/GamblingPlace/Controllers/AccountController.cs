@@ -116,6 +116,7 @@ namespace GamblingPlace.Controllers
         {
             HttpContext.Session.SetObjectAsJson<string>("UserId", null);
             HttpContext.Session.SetObjectAsJson<string>("Email", null);
+            HttpContext.Session.SetObjectAsJson<double>("Coins", 0);
             return RedirectToAction(nameof(HomeController.Index), "Home");
         }
 
@@ -163,6 +164,7 @@ namespace GamblingPlace.Controllers
 
                 HttpContext.Session.SetObjectAsJson<string>("UserId", user.Id);
                 HttpContext.Session.SetObjectAsJson<string>("Email", user.Email);
+                HttpContext.Session.SetObjectAsJson<double>("Coins", user.Coins);
             }
             catch (Exception ex)
             {
@@ -171,7 +173,7 @@ namespace GamblingPlace.Controllers
             }
 
 
-            return RedirectToAction("AllExceptions", "Home");
+            return RedirectToAction("Index", "Home");
         }
 
 
