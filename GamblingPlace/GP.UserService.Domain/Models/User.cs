@@ -28,7 +28,7 @@ namespace GP.UserService.Domain
         public string Email { get; private set; }
         public string Password { get; private set; }
         public DateTime DateCreated { get; private set; }
-        public double Coins { get; private set; }
+        public double Coins { get; set; }
         public bool IsAdmin { get; private set; }
         public string ValidationCode { get; private set; }
         public bool IsEmailConfirmed { get; private set; }

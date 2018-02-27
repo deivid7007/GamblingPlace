@@ -55,14 +55,6 @@ namespace GamblingPlace.Controllers
             return View();
         }
 
-        //public IActionResult AllExceptions()
-        //{
-        //    _userId = HttpContext.Session.GetObjectFromJson<string>("UserId");
-        //    _email = HttpContext.Session.GetObjectFromJson<string>("Email");
-        //    ViewData["UserId"] = _userId;
-        //    ViewData["Email"] = _email;
-        //    return View();
-        //}
         [HttpGet]
         public async Task<IActionResult> AllExceptions()
         {
