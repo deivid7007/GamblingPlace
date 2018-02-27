@@ -20,6 +20,7 @@ namespace GamblingPlace.Controllers
         private IAdmin _adminManager = new AdminManager();
         private ILog _logger = Logger.GetInstance;
         private string _email;
+        private double _coins;
         private string _userId;
 
         public IActionResult Index()
@@ -33,8 +34,12 @@ namespace GamblingPlace.Controllers
             ViewData["Message"] = "Your contact page.";
             _userId = HttpContext.Session.GetObjectFromJson<string>("UserId");
             _email = HttpContext.Session.GetObjectFromJson<string>("Email");
+            _coins = HttpContext.Session.GetObjectFromJson<double>("Coins");
             ViewData["UserId"] = _userId;
             ViewData["Email"] = _email;
+            ViewData["Coins"] = _coins;
+            
+
 
             return View();
         }
@@ -44,11 +49,16 @@ namespace GamblingPlace.Controllers
         {
             try
             {
+
                 User user = await _userManager.CheckEmailForExistance(entry.Email);
 
                 if (user != null)
                 {
                     await _adminManager.AddCoinsByEmail(entry.Email,entry.Coins);
+                }
+                else
+                {
+                    return NotFound("Invalid email");
                 }
                 
             }
@@ -57,7 +67,7 @@ namespace GamblingPlace.Controllers
                 await _logger.LogCustomExceptionAsync(ex, null);
                 return RedirectToAction("Index", "Home");
             }
-            return RedirectToAction("AddCoinsByEmail", "Admin");
+            return RedirectToAction("Index", "Home");
         }
 
     }
