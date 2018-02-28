@@ -9,10 +9,13 @@ using GP.LogService;
 using GP.LogService.Domain;
 using GP.UserService;
 using GP.UserService.Domain;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
 namespace GamblingPlace.Controllers
 {
+    
     public class AdminController : Controller
     {
         private GPDbContext _ctx = new GPDbContext();
@@ -28,6 +31,7 @@ namespace GamblingPlace.Controllers
             return View();
         }
 
+        
         [HttpGet]
         public IActionResult AddCoinsByEmail()
         {

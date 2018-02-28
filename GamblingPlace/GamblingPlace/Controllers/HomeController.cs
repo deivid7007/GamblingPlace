@@ -12,6 +12,7 @@ using GP.LogService.Domain;
 using GP.LogService.Domain.Models;
 using GP.UserService;
 using GP.UserService.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace GamblingPlace.Controllers
 {
@@ -24,10 +25,18 @@ namespace GamblingPlace.Controllers
         private ILog _logger = Logger.GetInstance;
         private GPDbContext _ctx = new GPDbContext();
 
+
         public IActionResult Index()
         {
+
             _userId = HttpContext.Session.GetObjectFromJson<string>("UserId");
             _email = HttpContext.Session.GetObjectFromJson<string>("Email");
+            if (_userId != null)
+            {
+                HttpContext.Session.SetObjectAsJson<double>("Coins", 0);
+                double coins = UpdateCoins(_userId);
+                HttpContext.Session.SetObjectAsJson<double>("Coins", coins);
+            }
             _coins = HttpContext.Session.GetObjectFromJson<double>("Coins");
             ViewData["UserId"] = _userId;
             ViewData["Email"] = _email;
@@ -40,6 +49,12 @@ namespace GamblingPlace.Controllers
         {
             _userId = HttpContext.Session.GetObjectFromJson<string>("UserId");
             _email = HttpContext.Session.GetObjectFromJson<string>("Email");
+            if (_userId != null)
+            {
+                HttpContext.Session.SetObjectAsJson<double>("Coins", 0);
+                double coins = UpdateCoins(_userId);
+                HttpContext.Session.SetObjectAsJson<double>("Coins", coins);
+            }
             _coins = HttpContext.Session.GetObjectFromJson<double>("Coins");
             ViewData["UserId"] = _userId;
             ViewData["Email"] = _email;
@@ -53,6 +68,12 @@ namespace GamblingPlace.Controllers
             ViewData["Message"] = "Your contact page.";
             _userId = HttpContext.Session.GetObjectFromJson<string>("UserId");
             _email = HttpContext.Session.GetObjectFromJson<string>("Email");
+            if (_userId != null)
+            {
+                HttpContext.Session.SetObjectAsJson<double>("Coins", 0);
+                double coins = UpdateCoins(_userId);
+                HttpContext.Session.SetObjectAsJson<double>("Coins", coins);
+            }
             _coins = HttpContext.Session.GetObjectFromJson<double>("Coins");
             ViewData["UserId"] = _userId;
             ViewData["Email"] = _email;
@@ -66,6 +87,12 @@ namespace GamblingPlace.Controllers
         {
             _userId = HttpContext.Session.GetObjectFromJson<string>("UserId");
             _email = HttpContext.Session.GetObjectFromJson<string>("Email");
+            if (_userId != null)
+            {
+                HttpContext.Session.SetObjectAsJson<double>("Coins", 0);
+                double coins = UpdateCoins(_userId);
+                HttpContext.Session.SetObjectAsJson<double>("Coins", coins);
+            }
             _coins = HttpContext.Session.GetObjectFromJson<double>("Coins");
             ViewData["UserId"] = _userId;
             ViewData["Email"] = _email;
@@ -85,6 +112,12 @@ namespace GamblingPlace.Controllers
             }
 
             return View(exceptions);
+        }
+
+        public double UpdateCoins(string _userId)
+        {
+            var user = _ctx.Users.FirstOrDefault(u => u.Id == _userId);
+           return user.Coins;
         }
     }
 }
