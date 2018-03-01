@@ -51,5 +51,7 @@ namespace GP.UserService
         {
             return await _ctx.Users.FirstOrDefaultAsync(u => u.Email == email);
         }
+
+       
     }
 }

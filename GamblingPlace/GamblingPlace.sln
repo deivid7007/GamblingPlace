@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2027
+VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GamblingPlace", "GamblingPlace\GamblingPlace.csproj", "{4BB05075-31A4-41E6-8265-564F81D2EA9A}"
 EndProject
@@ -21,9 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GP.LogService.Domain", "GP.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GP.LogService", "GP.LogService\GP.LogService.csproj", "{58ACD850-33AE-4973-9362-066D792EFA12}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GP.NotificationService.Domain", "GP.NotificationService.Domain\GP.NotificationService.Domain.csproj", "{1A768585-9F75-4150-AFDA-537C94120B80}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GP.NotificationService.Domain", "GP.NotificationService.Domain\GP.NotificationService.Domain.csproj", "{1A768585-9F75-4150-AFDA-537C94120B80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GP.NotificationService", "GP.NotificationService\GP.NotificationService.csproj", "{EA1FE75F-37F3-4A19-887F-CCB19EE4271F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GP.NotificationService", "GP.NotificationService\GP.NotificationService.csproj", "{EA1FE75F-37F3-4A19-887F-CCB19EE4271F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
