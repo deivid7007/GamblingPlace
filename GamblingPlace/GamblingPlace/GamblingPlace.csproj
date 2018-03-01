@@ -14,6 +14,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\images\arrowDown.png" />
+    <None Include="wwwroot\images\playButtonNew.png" />
+    <None Include="wwwroot\images\rouletteIMG.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\GP.Common\GP.Common.csproj" />
     <ProjectReference Include="..\GP.DB\GP.DB.csproj" />
     <ProjectReference Include="..\GP.LogService\GP.LogService.csproj" />

@@ -1,0 +1,78 @@
+﻿@{
+    ViewData["Title"] = "Roulette";
+}
+<head>
+    <h1>Roulette Gambling Zone</h1>
+</head>
+<body>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+        asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+        asp-fallback-test="window.jQuery"
+        crossorigin="anonymous"
+        integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
+</script>
+<br/>
+<img id="arrow" src="~/images/arrowDown.png"/>
+<br/>
+<img id="roullete" src="~/images/rouletteIMG.png"/>
+<br/>
+<button id="starter"><img src="~/images/playButtonNew.png"></button>
+
+
+<script>
+    $(document).ready(function() {
+
+        $("#starter").click(function() {
+
+            var audio = new Audio("../Sounds/Roulette Sound Effect.mp3");
+            audio.play();
+
+            var randomNum = Math.floor((Math.random() * 1000) + 1);
+
+            $('#roullete').css("transform", `rotate(${randomNum}deg)`);
+            $('#roullete').css("transition", "12s ease-out");
+            console.log(randomNum);
+
+
+            var winningNumberPosition = 0;
+            var position = 0;
+
+            if (randomNum <= 360) {
+                winningNumberPosition = randomNum;
+            } else if (randomNum > 360 && randomNum <= 720) {
+                winningNumberPosition = randomNum - 360;
+            } else if (randomNum > 720 && randomNum <= 1080) {
+                winningNumberPosition = randomNum - 720;
+            }
+
+            position = Math.floor(winningNumberPosition);
+            console.log(position);
+
+            audio.stop();
+
+        });
+    })
+</script>
+
+<style>
+    #arrow {
+        position: relative;
+        left: 160px;
+        width: 100px;
+        height: 100px;
+    }
+
+    #roullete {
+        position: center;
+    }
+
+    #starter {
+        position: relative;
+        left: 130px;
+        border: none;
+        background: none;
+    }
+</style>
+
+</body>
+
