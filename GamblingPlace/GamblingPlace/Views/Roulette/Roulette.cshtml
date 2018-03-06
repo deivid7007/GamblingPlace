@@ -1,4 +1,5 @@
-﻿@{
+﻿@using GamblingPlace.Controllers
+@{
     ViewData["Title"] = "Roulette";
 }
 <head>
@@ -27,29 +28,23 @@
         <button class="starter" id="blackStarter" style="height: 50px; width: 15%; background-color: black;">Black</button>
     </div>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
 
-            $(".starter").click(function () {
+            $(".starter").click(function() {
 
                 $('.starter').prop('disabled', true);
 
-                var audio = new Audio("../Sounds/Roulette Sound Effect.mp3");
+                var audio = new Audio("../sounds/RouletteSoundEffect.mp3");
                 audio.play();
-
 
 
                 var randomNum = Math.floor((Math.random() * 1080) + 361);
                
 
                 $('#roullete').css("transform", `rotate(${randomNum}deg)`);
-                $('#roullete').css("transition", "5s ease-out");
+                $('#roullete').css("transition", "12s ease-out");
 
                 console.log(randomNum);
-
-
-
-
-
 
                 var winningNumberPosition = 0;
                 var position = 0;
@@ -67,7 +62,7 @@
                 console.log(position);
                 setTimeout(function () {
                     $('.starter').prop('disabled', false);
-                }, 7 * 1000);
+                }, 14 * 1000);
 
                 audio.stop();
             });

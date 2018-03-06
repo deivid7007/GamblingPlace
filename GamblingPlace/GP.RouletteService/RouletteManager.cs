@@ -2,8 +2,11 @@
 using GP.RouletteService.Domain;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GP.UserService.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace GP.RouletteService
 {
@@ -16,14 +19,12 @@ namespace GP.RouletteService
             this._ctx = new GPDbContext();
         }
 
-        public Task BetCoinsOnBlack(double coins)
+        public async Task SaveCoins(string email,double coins)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task BetCoinsOnRed(double coins)
-        {
-            throw new NotImplementedException();
+            List<User> users = await _ctx.Users.ToListAsync();
+            User user = _ctx.Users.FirstOrDefault(u => u.Email == email);
+            user.Coins = user.Coins + coins;
+            await _ctx.SaveChangesAsync();
         }
     }
 }

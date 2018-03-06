@@ -4,10 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using GamblingPlace.Extensions;
 using GP.DB;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GamblingPlace.Controllers
 {
+    
     public class RouletteController : Controller
     {
         private string _userId;
@@ -19,7 +21,6 @@ namespace GamblingPlace.Controllers
         {
             return View();
         }
-
 
         [HttpGet]
         public IActionResult Roulette()

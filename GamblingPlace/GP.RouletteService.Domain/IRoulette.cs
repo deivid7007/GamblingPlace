@@ -7,7 +7,6 @@ namespace GP.RouletteService.Domain
 {
     public interface IRoulette
     {
-        Task BetCoinsOnRed(double coins);
-        Task BetCoinsOnBlack(double coins);
+        Task SaveCoins(string email,double coins);
     }
 }
