@@ -19,8 +19,8 @@
     <div align="left">
         <input id="coinsBet" type="number" value="0" style="height: 50px; width: 45%; text-align: center; display: block;" />
     </div>
-    <br/>
-    <br/>
+    <br />
+    <br />
     <div align="left">
         <button class="starter" id="redStarter" style="height: 50px; width: 15%; background-color: red;">Red</button>
         <button class="starter" id="greenStarter" style="height: 50px; width: 15%; background-color: green;">Green</button>
@@ -36,16 +36,19 @@
                 var audio = new Audio("../Sounds/Roulette Sound Effect.mp3");
                 audio.play();
 
-                var randomNum = Math.floor((Math.random() * 1000) + 1);
-                
+
+
+                var randomNum = Math.floor((Math.random() * 1080) + 361);
+               
+
                 $('#roullete').css("transform", `rotate(${randomNum}deg)`);
                 $('#roullete').css("transition", "5s ease-out");
-                
-                console.log(randomNum);
-                
 
-                
-               
+                console.log(randomNum);
+
+
+
+
 
 
                 var winningNumberPosition = 0;
@@ -59,12 +62,15 @@
                     winningNumberPosition = randomNum - 720;
                 }
 
+
                 position = Math.floor(winningNumberPosition);
                 console.log(position);
-                $('.starter').prop('enabled', true);
+                setTimeout(function () {
+                    $('.starter').prop('disabled', false);
+                }, 7 * 1000);
+
                 audio.stop();
             });
-
         })
     </script>
 
