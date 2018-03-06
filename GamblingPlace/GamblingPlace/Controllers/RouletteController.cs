@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GamblingPlace.DTO;
 using GamblingPlace.Extensions;
 using GP.DB;
 using Microsoft.AspNetCore.Authorization;
@@ -37,6 +38,14 @@ namespace GamblingPlace.Controllers
             ViewData["UserId"] = _userId;
             ViewData["Email"] = _email;
             ViewData["Coins"] = _coins;
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Roulette([FromBody]BetEntry entry)
+        {
+            var num = entry.RandomFromHidden;
 
             return View();
         }

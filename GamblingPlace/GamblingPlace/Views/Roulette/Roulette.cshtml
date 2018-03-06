@@ -18,19 +18,22 @@
     <img id="roullete" src="~/images/rouletteIMG.png" />
     <br />
     <div align="left">
+        <input id="randomNum" type="number"/>
+    </div>
+    <div align="left">
         <input id="coinsBet" type="number" value="0" style="height: 50px; width: 45%; text-align: center; display: block;" />
     </div>
     <br />
     <br />
     <div align="left">
-        <button class="starter" id="redStarter" style="height: 50px; width: 15%; background-color: red;">Red</button>
+        <button asp-area="" asp-action="Roulette" asp-controller="Roulette" class="starter" id="redStarter" style="height: 50px; width: 15%; background-color: red;">Red</button>
         <button class="starter" id="greenStarter" style="height: 50px; width: 15%; background-color: green;">Green</button>
         <button class="starter" id="blackStarter" style="height: 50px; width: 15%; background-color: black;">Black</button>
     </div>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
 
-            $(".starter").click(function() {
+            $(".starter").click(function () {
 
                 $('.starter').prop('disabled', true);
 
@@ -39,7 +42,7 @@
 
 
                 var randomNum = Math.floor((Math.random() * 1080) + 361);
-               
+                $('#randomNum').val(randomNum);
 
                 $('#roullete').css("transform", `rotate(${randomNum}deg)`);
                 $('#roullete').css("transition", "12s ease-out");
