@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GamblingPlace.Controllers
 {
-    
+
     public class RouletteController : Controller
     {
         private string _userId;
@@ -67,7 +67,7 @@ namespace GamblingPlace.Controllers
 
             if (num > fullCicle)
             {
-                while (num>fullCicle)
+                while (num > fullCicle)
                 {
                     num -= fullCicle;
                 }
@@ -75,18 +75,19 @@ namespace GamblingPlace.Controllers
 
             double resultFloating = num / 24;
 
-           double result = Math.Ceiling(resultFloating) + 1;
+            double res = Math.Ceiling(resultFloating) + 1;
+            int result = Convert.ToInt32(res);
 
             if (color == "red")
             {
                 if ((result - 1) == 0)
                 {
-                   await _rouletteManager.SaveCoinsOnLoose(_email,bettedCoins);
+                    await _rouletteManager.SaveCoinsOnLoose(_email, bettedCoins);
                 }
                 else if (((result - 1) % 2) == 1)
                 {
                     await _rouletteManager.SaveCoinsOnLoose(_email, bettedCoins);
-                    
+
                 }
                 else if (((result - 1) % 2) == 0)
                 {
@@ -125,14 +126,14 @@ namespace GamblingPlace.Controllers
                     bettedCoins = bettedCoins * 2;
 
                     await _rouletteManager.SaveCoinsOnWin(_email, bettedCoins);
-                    
+
                 }
                 else if (((result - 1) % 2) == 0)
                 {
                     await _rouletteManager.SaveCoinsOnLoose(_email, bettedCoins);
                 }
             }
-            
+
 
 
             return RedirectToAction("Roulette", "Roulette");
