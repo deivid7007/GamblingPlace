@@ -9,5 +9,6 @@ namespace GamblingPlace.DTO
     {
         public int RandomFromHidden { get; set; }
         public int Input { get; set; }
+        public string Color { get; set; }
     }
 }

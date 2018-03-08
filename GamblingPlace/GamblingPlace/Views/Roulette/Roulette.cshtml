@@ -26,17 +26,59 @@
     <br />
     <br />
     <form id="rouletteForm" asp-area="" asp-action="Roulette" asp-controller="Roulette" method="post">
-        <input id="randomNum" type="number" asp-for="RandomFromHidden"/>
+        <input id="randomNum" type="number" asp-for="RandomFromHidden" />
         <input id="coinsBet" type="number" value="0" style="height: 50px; width: 45%; text-align: center; display: block;" asp-for="Input" />
-        
-        <button type="submit" class="starter" id="redStarter" style="height: 50px; width: 15%; background-color: red;">Red</button>
-        <button class="starter" id="greenStarter" style="height: 50px; width: 15%; background-color: green;">Green</button>
-        <button class="starter" id="blackStarter" style="height: 50px; width: 15%; background-color: black;">Black</button>
+        <input id="color" type="text"  style="height: 50px; width: 45%; text-align: center; display: block;" asp-for="Color" />
+
+        <button name="red"  id="redStarter" style="height: 50px; width: 15%; background-color: red;">Red</button>
+        <button name="green"  id="greenStarter" style="height: 50px; width: 15%; background-color: green;">Green</button>
+        <button name="black"  id="blackStarter" style="height: 50px; width: 15%; background-color: black;">Black</button>
     </form>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
+
+            // Handling dinamic attributes and types of buttons
+
+            $("#greenStarter").hover(function() {
+                $('#greenStarter').prop('type', 'submit');
+                $('#greenStarter').prop('class', 'starter');
+            });
+
+            $("#greenStarter").mouseout(function () {
+                $('#greenStarter').prop('type', 'reset');
+                $('#greenStarter').prop('class', 'inactive');
+            });
+
+            $("#blackStarter").hover(function () {
+                $('#blackStarter').prop('type', 'submit');
+                $('#blackStarter').prop('class', 'starter');
+            });
+
+            $("#blackStarter").mouseout(function () {
+                $('#blackStarter').prop('type', 'reset');
+                $('#blackStarter').prop('class', 'inactive');
+            });
+
+            $("#redStarter").hover(function () {
+                $('#redStarter').prop('type', 'submit');
+                $('#redStarter').prop('class', 'starter');
+            });
+            $("#redStarter").mouseout(function () {
+                $('#redStarter').prop('type', 'reset');
+                $('#redStarter').prop('class', 'inactive');
+            });
+
 
             $("#rouletteForm").submit(function() {
+
+
+
+                //// color
+                //$('.starter').attr('name');
+                //// color
+
+                var colorFromHidden = $('.starter').attr('name');;
+                $('#color').val(colorFromHidden);
 
                 $('.starter').prop('disabled', true);
 
@@ -55,13 +97,13 @@
                 var winningNumberPosition = 0;
                 var position = 0;
 
-                if (randomNum <= 360) {
-                    winningNumberPosition = randomNum;
-                } else if (randomNum > 360 && randomNum <= 720) {
-                    winningNumberPosition = randomNum - 360;
-                } else if (randomNum > 720 && randomNum <= 1080) {
-                    winningNumberPosition = randomNum - 720;
-                }
+                //if (randomNum <= 360) {
+                //    winningNumberPosition = randomNum;
+                //} else if (randomNum > 360 && randomNum <= 720) {
+                //    winningNumberPosition = randomNum - 360;
+                //} else if (randomNum > 720 && randomNum <= 1080) {
+                //    winningNumberPosition = randomNum - 720;
+                //}
 
 
                 position = Math.floor(winningNumberPosition);
@@ -78,7 +120,10 @@
                         }
                 }, 14 * 1000);
 
-            });
+
+                    
+
+                });
         })})
     </script>
 

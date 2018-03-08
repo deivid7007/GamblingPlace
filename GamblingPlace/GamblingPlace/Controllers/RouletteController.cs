@@ -45,9 +45,35 @@ namespace GamblingPlace.Controllers
         [HttpPost]
         public void Roulette(BetEntry entry)
         {
-            var num = entry;
+            const int fullCicle = 360;
+            var num = entry.RandomFromHidden;
+            if (num > fullCicle)
+            {
+                while (num>fullCicle)
+                {
+                    num -= fullCicle;
+                }
+            }
 
-           // return RedirectToAction("Roulette", "Roulette");
+            double resultFloating = num / 24;
+
+           double result = Math.Ceiling(resultFloating) + 1;
+
+            if ((result - 1) == 0)
+            {
+                // this is 0 --> coins x 14
+            }
+            else if (((result -1) % 2) == 1)
+            {
+                // this is red --> x 2
+            }
+            else if (((result - 1) % 2) == 0)
+            {
+                // this is black --> x 2
+            }
+
+
+            // return RedirectToAction("Roulette", "Roulette");
         }
 
         public double UpdateCoins(string _userId)
