@@ -46,7 +46,10 @@ namespace GamblingPlace.Controllers
         public void Roulette(BetEntry entry)
         {
             const int fullCicle = 360;
-            var num = entry.RandomFromHidden;
+            int num = entry.RandomFromHidden;
+            string color = entry.Color;
+            int bettedCoins = entry.Input;
+
             if (num > fullCicle)
             {
                 while (num>fullCicle)
@@ -59,18 +62,54 @@ namespace GamblingPlace.Controllers
 
            double result = Math.Ceiling(resultFloating) + 1;
 
-            if ((result - 1) == 0)
+            if (color == "red")
             {
-                // this is 0 --> coins x 14
+                if ((result - 1) == 0)
+                {
+                    // loosing the bet
+                }
+                else if (((result - 1) % 2) == 1)
+                {
+                    // this is red --> x 2
+                }
+                else if (((result - 1) % 2) == 0)
+                {
+                    // loosing the bet
+                }
             }
-            else if (((result -1) % 2) == 1)
+
+            else if (color == "green")
             {
-                // this is red --> x 2
+                if ((result - 1) == 0)
+                {
+                    // this is 0 --> coins x 14
+                }
+                else if (((result - 1) % 2) == 1)
+                {
+                    // loosing the bet
+                }
+                else if (((result - 1) % 2) == 0)
+                {
+                    // loosing the bet
+                }
             }
-            else if (((result - 1) % 2) == 0)
+
+            else if (color == "black")
             {
-                // this is black --> x 2
+                if ((result - 1) == 0)
+                {
+                    // loosing the bet
+                }
+                else if (((result - 1) % 2) == 1)
+                {
+                    // loosing the bet
+                }
+                else if (((result - 1) % 2) == 0)
+                {
+                    // this is black --> x 2
+                }
             }
+            
 
 
             // return RedirectToAction("Roulette", "Roulette");
