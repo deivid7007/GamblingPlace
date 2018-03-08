@@ -19,7 +19,25 @@ namespace GP.RouletteService
             this._ctx = new GPDbContext();
         }
 
-        public async Task SaveCoins(string email,double coins)
+
+
+        //public async Task SaveCoins(string email,double coins)
+        //{
+        //    List<User> users = await _ctx.Users.ToListAsync();
+        //    User user = _ctx.Users.FirstOrDefault(u => u.Email == email);
+        //    user.Coins = user.Coins + coins;
+        //    await _ctx.SaveChangesAsync();
+        //}
+
+        public async Task SaveCoinsOnLoose(string email, double coins)
+        {
+            List<User> users = await _ctx.Users.ToListAsync();
+            User user = _ctx.Users.FirstOrDefault(u => u.Email == email);
+            user.Coins = user.Coins - coins;
+            await _ctx.SaveChangesAsync();
+        }
+
+        public async Task SaveCoinsOnWin(string email, double coins)
         {
             List<User> users = await _ctx.Users.ToListAsync();
             User user = _ctx.Users.FirstOrDefault(u => u.Email == email);

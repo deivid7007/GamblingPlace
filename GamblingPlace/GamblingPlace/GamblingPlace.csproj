@@ -26,6 +26,7 @@
     <ProjectReference Include="..\GP.LogService\GP.LogService.csproj" />
     <ProjectReference Include="..\GP.NotificationService.Domain\GP.NotificationService.Domain.csproj" />
     <ProjectReference Include="..\GP.NotificationService\GP.NotificationService.csproj" />
+    <ProjectReference Include="..\GP.RouletteService\GP.RouletteService.csproj" />
     <ProjectReference Include="..\GP.UserService\GP.UserService.csproj" />
   </ItemGroup>
 

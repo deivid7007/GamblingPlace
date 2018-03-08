@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using GamblingPlace.DTO;
 using GamblingPlace.Extensions;
 using GP.DB;
+using GP.RouletteService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,8 +15,9 @@ namespace GamblingPlace.Controllers
     public class RouletteController : Controller
     {
         private string _userId;
-        private string _email;
+        public string _email;
         private double _coins;
+        private RouletteManager _rouletteManager = new RouletteManager();
         private GPDbContext _ctx = new GPDbContext();
 
         public IActionResult Index()
@@ -43,8 +45,21 @@ namespace GamblingPlace.Controllers
         }
 
         [HttpPost]
-        public void Roulette(BetEntry entry)
+        public async void Roulette(BetEntry entry)
         {
+            _userId = HttpContext.Session.GetObjectFromJson<string>("UserId");
+            _email = HttpContext.Session.GetObjectFromJson<string>("Email");
+            if (_userId != null)
+            {
+                HttpContext.Session.SetObjectAsJson<double>("Coins", 0);
+                double coins = UpdateCoins(_userId);
+                HttpContext.Session.SetObjectAsJson<double>("Coins", coins);
+            }
+            _coins = HttpContext.Session.GetObjectFromJson<double>("Coins");
+            ViewData["UserId"] = _userId;
+            ViewData["Email"] = _email;
+            ViewData["Coins"] = _coins;
+
             const int fullCicle = 360;
             int num = entry.RandomFromHidden;
             string color = entry.Color;
@@ -66,15 +81,18 @@ namespace GamblingPlace.Controllers
             {
                 if ((result - 1) == 0)
                 {
-                    // loosing the bet
+                   await _rouletteManager.SaveCoinsOnLoose(_email,bettedCoins);
                 }
                 else if (((result - 1) % 2) == 1)
                 {
-                    // this is red --> x 2
+                    await _rouletteManager.SaveCoinsOnLoose(_email, bettedCoins);
+                    
                 }
                 else if (((result - 1) % 2) == 0)
                 {
-                    // loosing the bet
+                    bettedCoins = bettedCoins * 2;
+
+                    await _rouletteManager.SaveCoinsOnWin(_email, bettedCoins);
                 }
             }
 
@@ -82,15 +100,17 @@ namespace GamblingPlace.Controllers
             {
                 if ((result - 1) == 0)
                 {
-                    // this is 0 --> coins x 14
+                    bettedCoins = bettedCoins * 14;
+
+                    await _rouletteManager.SaveCoinsOnWin(_email, bettedCoins);
                 }
                 else if (((result - 1) % 2) == 1)
                 {
-                    // loosing the bet
+                    await _rouletteManager.SaveCoinsOnLoose(_email, bettedCoins);
                 }
                 else if (((result - 1) % 2) == 0)
                 {
-                    // loosing the bet
+                    await _rouletteManager.SaveCoinsOnLoose(_email, bettedCoins);
                 }
             }
 
@@ -98,15 +118,18 @@ namespace GamblingPlace.Controllers
             {
                 if ((result - 1) == 0)
                 {
-                    // loosing the bet
+                    await _rouletteManager.SaveCoinsOnLoose(_email, bettedCoins);
                 }
                 else if (((result - 1) % 2) == 1)
                 {
-                    // loosing the bet
+                    bettedCoins = bettedCoins * 2;
+
+                    await _rouletteManager.SaveCoinsOnWin(_email, bettedCoins);
+                    
                 }
                 else if (((result - 1) % 2) == 0)
                 {
-                    // this is black --> x 2
+                    await _rouletteManager.SaveCoinsOnLoose(_email, bettedCoins);
                 }
             }
             
