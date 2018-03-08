@@ -45,7 +45,7 @@ namespace GamblingPlace.Controllers
         }
 
         [HttpPost]
-        public async void Roulette(BetEntry entry)
+        public async Task<IActionResult> Roulette(BetEntry entry)
         {
             _userId = HttpContext.Session.GetObjectFromJson<string>("UserId");
             _email = HttpContext.Session.GetObjectFromJson<string>("Email");
@@ -135,7 +135,7 @@ namespace GamblingPlace.Controllers
             
 
 
-            // return RedirectToAction("Roulette", "Roulette");
+            return RedirectToAction("Roulette", "Roulette");
         }
 
         public double UpdateCoins(string _userId)

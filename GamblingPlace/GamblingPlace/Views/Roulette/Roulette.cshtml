@@ -26,9 +26,9 @@
     <br />
     <br />
     <form id="rouletteForm" asp-area="" asp-action="Roulette" asp-controller="Roulette" method="post">
-        <input id="randomNum" type="number" asp-for="RandomFromHidden" />
+        <input id="randomNum" type="hidden" asp-for="RandomFromHidden" />
         <input id="coinsBet" type="number" value="0" style="height: 50px; width: 45%; text-align: center; display: block;" asp-for="Input" />
-        <input id="color" type="text"  style="height: 50px; width: 45%; text-align: center; display: block;" asp-for="Color" />
+        <input id="color" type="hidden"  style="height: 50px; width: 45%; text-align: center; display: block;" asp-for="Color" />
 
         <button name="red"  id="redStarter" style="height: 50px; width: 15%; background-color: red;">Red</button>
         <button name="green"  id="greenStarter" style="height: 50px; width: 15%; background-color: green;">Green</button>
@@ -73,10 +73,6 @@
 
 
 
-                //// color
-                //$('.starter').attr('name');
-                //// color
-
                 var colorFromHidden = $('.starter').attr('name');;
                 $('#color').val(colorFromHidden);
 
@@ -97,15 +93,6 @@
                 var winningNumberPosition = 0;
                 var position = 0;
 
-                //if (randomNum <= 360) {
-                //    winningNumberPosition = randomNum;
-                //} else if (randomNum > 360 && randomNum <= 720) {
-                //    winningNumberPosition = randomNum - 360;
-                //} else if (randomNum > 720 && randomNum <= 1080) {
-                //    winningNumberPosition = randomNum - 720;
-                //}
-
-
                 position = Math.floor(winningNumberPosition);
                 console.log(position);
                 setTimeout(function() {
@@ -113,7 +100,7 @@
 
                     $.ajax({
                         url: "@Url.Action("Roulette", "Roulette")/",
-                        success: function(data) { alert("W8"); }, 
+                        success: function () { alert("Please wait until the spin end !"); }, 
                         statusCode : {
                             404: function(content) { alert('cannot find resource'); },
                             500: function(content) { alert('internal server error'); }
