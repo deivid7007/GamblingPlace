@@ -1,4 +1,4 @@
-﻿@using GamblingPlace.Controllers
+﻿@model GamblingPlace.DTO.BetEntry;
 @{
     ViewData["Title"] = "Roulette";
 }
@@ -17,23 +17,26 @@
     <br />
     <img id="roullete" src="~/images/rouletteIMG.png" />
     <br />
-    <div align="left">
+    @*<div align="left">
         <input id="randomNum" type="number"/>
     </div>
     <div align="left">
         <input id="coinsBet" type="number" value="0" style="height: 50px; width: 45%; text-align: center; display: block;" />
-    </div>
+    </div>*@
     <br />
     <br />
-    <div align="left">
-        <button asp-area="" asp-action="Roulette" asp-controller="Roulette" class="starter" id="redStarter" style="height: 50px; width: 15%; background-color: red;">Red</button>
+    <form id="rouletteForm" asp-area="" asp-action="Roulette" asp-controller="Roulette" method="post">
+        <input id="randomNum" type="number" asp-for="RandomFromHidden"/>
+        <input id="coinsBet" type="number" value="0" style="height: 50px; width: 45%; text-align: center; display: block;" asp-for="Input" />
+        
+        <button type="submit" class="starter" id="redStarter" style="height: 50px; width: 15%; background-color: red;">Red</button>
         <button class="starter" id="greenStarter" style="height: 50px; width: 15%; background-color: green;">Green</button>
         <button class="starter" id="blackStarter" style="height: 50px; width: 15%; background-color: black;">Black</button>
-    </div>
+    </form>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
 
-            $(".starter").click(function () {
+            $("#rouletteForm").submit(function() {
 
                 $('.starter').prop('disabled', true);
 
@@ -41,8 +44,8 @@
                 audio.play();
 
 
-                var randomNum = Math.floor((Math.random() * 1080) + 361);
-                $('#randomNum').val(randomNum);
+                var randomNum = Math.floor((Math.random() * 1080) + 1) -8;
+                var numberFromHidden = $('#randomNum').val(randomNum);
 
                 $('#roullete').css("transform", `rotate(${randomNum}deg)`);
                 $('#roullete').css("transition", "12s ease-out");
@@ -63,13 +66,20 @@
 
                 position = Math.floor(winningNumberPosition);
                 console.log(position);
-                setTimeout(function () {
+                setTimeout(function() {
                     $('.starter').prop('disabled', false);
+
+                    $.ajax({
+                        url: "@Url.Action("Roulette", "Roulette")/",
+                        success: function(data) { alert("W8"); }, 
+                        statusCode : {
+                            404: function(content) { alert('cannot find resource'); },
+                            500: function(content) { alert('internal server error'); }
+                        }
                 }, 14 * 1000);
 
-                audio.stop();
             });
-        })
+        })})
     </script>
 
     <style>
@@ -82,6 +92,7 @@
 
         #roullete {
             position: center;
+            transform: rotate(-8deg);
         }
 
         #starter {

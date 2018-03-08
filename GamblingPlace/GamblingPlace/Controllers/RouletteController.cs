@@ -43,11 +43,11 @@ namespace GamblingPlace.Controllers
         }
 
         [HttpPost]
-        public IActionResult Roulette([FromBody]BetEntry entry)
+        public void Roulette(BetEntry entry)
         {
-            var num = entry.RandomFromHidden;
+            var num = entry;
 
-            return View();
+           // return RedirectToAction("Roulette", "Roulette");
         }
 
         public double UpdateCoins(string _userId)
