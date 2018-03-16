@@ -81,7 +81,8 @@ namespace GamblingPlace.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            return RedirectToAction("Index", "Home");
+            return View("Welcome");
+            //return RedirectToAction("Index", "Home");
         }
         [HttpGet]
         [AllowAnonymous]
