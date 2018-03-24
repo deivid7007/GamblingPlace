@@ -15,7 +15,6 @@
 
   <ItemGroup>
     <None Include="wwwroot\images\arrowDown.png" />
-    <None Include="wwwroot\images\playButtonNew.png" />
     <None Include="wwwroot\images\rouletteIMG.png" />
     <None Include="wwwroot\sounds\RouletteSoundEffect.mp3" />
   </ItemGroup>

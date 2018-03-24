@@ -23,7 +23,7 @@ namespace GP.NotificationService
         {
             string callbackUrl = $"{passwordResetUrl}?userId={user.Id}&validationCode={user.ValidationCode}";
             string link = $"<a href='{callbackUrl}'>here</a>!";
-            await SendEmailAsync(user.Email, "ITGigs change password request",
+            await SendEmailAsync(user.Email, "GamblingPlace change password request",
                 $"Please reset your password by clicking {link}");
         }
 
@@ -31,7 +31,7 @@ namespace GP.NotificationService
         {
             string callbackUrl = $"{confirmationEmailUrl}?userId={user.Id}&validationCode={user.ValidationCode}";
             string link = $"<a href='{callbackUrl}'>here</a>!";
-            await SendEmailAsync(user.Email, "ITGigs registration request",
+            await SendEmailAsync(user.Email, "GamblingPlace registration request",
                 $"To confirm your account click  -> {link}");
         }
 
